@@ -10,13 +10,13 @@ flag = 1
 while flag:
     flag, image = vidObj.read()
     try:
-        cv2.imwrite("./images/frame.jpg" % count, image)
+        cv2.imwrite(f"./images/frame{count}.jpg", image)
     except:
         break
     count += 1
 
 for i in range(count):
-    s = f"./images/frame.jpg{str(i)}.jpg"
+    s = f"./images/frame{str(i)}.jpg"
     output = ascii_magic.from_image_file(
         s,
         columns = 250,
