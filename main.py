@@ -1,7 +1,14 @@
-import os
 import cv2
 import imgkit
 import ascii_magic
+import os
+import sys
+import admin
+
+'''
+if not admin.isUserAdmin():
+        admin.runAsAdmin()
+'''
 
 vidObj = cv2.VideoCapture("./video.mp4")
 
@@ -25,7 +32,7 @@ for i in range(count):
     )
     ascii_magic.to_html_file(f"./html/frame{str(i)}.html", output, additional_styles='background: #222;')
 
-path = f"./my-secret-encoded.exe"
+path = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe"
 config = imgkit.config(wkhtmltoimage=path)
 for i in range(count):
     imgkit.from_file(f"./html/frame{str(i)}.html", f"./ascii/frame{str(i)}.jpg", config=config)
