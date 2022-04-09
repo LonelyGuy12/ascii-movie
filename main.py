@@ -3,14 +3,22 @@ import imgkit
 import ascii_magic
 import os
 import sys
+from moviepy.editor import VideoFileClip
+import numpy as np
+import moviepy.editor as mp
 import admin
+from datetime import timedelta
 
 '''
 if not admin.isUserAdmin():
         admin.runAsAdmin()
 '''
 
+audio_from_video = mp.VideoFileClip("./video.mp4")
 vidObj = cv2.VideoCapture("./video.mp4")
+print("Video Captured Successfully")
+audio_from_video.audio.write_audiofile("./audio.mp3")
+print("Audio Captured Successfully")
 
 count = 0
 flag = 1
@@ -32,7 +40,7 @@ for i in range(count):
     )
     ascii_magic.to_html_file(f"./html/frame{str(i)}.html", output, additional_styles='background: #222;')
 
-path = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe"
+path = "./wkhtmltoimage.exe"
 config = imgkit.config(wkhtmltoimage=path)
 for i in range(count):
     imgkit.from_file(f"./html/frame{str(i)}.html", f"./ascii/frame{str(i)}.jpg", config=config)
