@@ -57,3 +57,10 @@ for i in range(count):
 
 cv2.destroyAllWindows()
 video.release()
+
+audio = mp.AudioFileClip("./audio.mp3")
+video = mp.VideoFileClip("./asciivideo.mp4")
+
+final = video.set_audio(audio)
+
+final.write_videofile("./output.mp4")
