@@ -1,5 +1,7 @@
+import asyncio
 import cv2
 import imgkit
+import shutil
 import ascii_magic
 import os
 import sys
@@ -64,3 +66,19 @@ video = mp.VideoFileClip("./asciivideo.mp4")
 final = video.set_audio(audio)
 
 final.write_videofile("./output.mp4")
+
+shutil.rmtree("./images", ignore_errors=True)
+print("Images Cleaned Successfully")
+os.mkdir("./images")
+print("Images remade Successfully")
+shutil.rmtree("./html", ignore_errors=True)
+print("HTML Cleaned Successfully")
+os.mkdir("./html")
+print("HTML remade Successfully")
+shutil.rmtree("./ascii", ignore_errors=True)
+print("Ascii Images Cleaned Successfully")
+os.mkdir("./ascii")
+print("Ascii Images remade Successfully")
+
+asyncio.sleep(2)
+print("Over and out!")
