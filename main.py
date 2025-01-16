@@ -8,7 +8,7 @@ import sys
 from moviepy.editor import VideoFileClip
 import numpy as np
 import moviepy.editor as mp
-import admin
+#import admin
 from datetime import timedelta
 
 '''
