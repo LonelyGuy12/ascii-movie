@@ -3,8 +3,10 @@ import cv2
 import imgkit
 import shutil
 import ascii_magic
+from ascii_magic import AsciiArt
 import os
 import sys
+from moviepy import *
 from moviepy.editor import VideoFileClip
 import numpy as np
 import moviepy.editor as mp
@@ -34,13 +36,13 @@ while flag:
 
 for i in range(count):
     s = f"./images/frame{str(i)}.jpg"
-    output = ascii_magic.from_image_file(
-        s,
-        columns = 250,
-        width_ratio = 2,
-        mode = ascii_magic.Modes.HTML
+    output = AsciiArt.from_image(
+        s
     )
-    ascii_magic.to_html_file(f"./html/frame{str(i)}.html", output, additional_styles='background: #222;')
+    output.to_html_file(f"./html/frame{str(i)}.html",
+        additional_styles='background: #222;',
+        columns = 250,
+        width_ratio = 2,)
 
 path = "./wkhtmltoimage.exe"
 config = imgkit.config(wkhtmltoimage=path)
